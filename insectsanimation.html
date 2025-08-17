@@ -216,13 +216,23 @@
             background-color: rgba(240, 248, 255, 0.641);
 
             position: absolute;
-            top: 50%;
+            top: -150px;
             left: 50%;
 
-            transform: translate(-50%, -150%);
+            transform: translate(-50%, -50%);
             z-index: 5;
 
+            animation: appearmessagebox 3s linear forwards;
 
+        }
+
+        @keyframes appearmessagebox {
+            
+            100%{
+
+                top: 50%;
+
+            }
 
         }
 
@@ -244,20 +254,20 @@
                    <div id="insect-boxes-container">
                         <div class="insect-boxes">
                             <h3>Firefly</h3>
-                            <img width="70px" src="./insects/pngtree-firefly-insect-close-up-on-white-background-png-image_15866371.png" alt="">
+                            <img width="70px" src="./images/pngtree-firefly-insect-close-up-on-white-background-png-image_15866371.png" alt="">
                         </div>
                         <div class="insect-boxes">
                             <h3>Lady Bug
                             </h3>
-                            <img width="70px" src="./insects/pngtree-ladybug-isolated-on-white-transparent-background-png-image_17460342.png" alt="">
+                            <img width="70px" src="./images/pngtree-ladybug-isolated-on-white-transparent-background-png-image_17460342.png" alt="">
                         </div>
                         <div class="insect-boxes">
                             <h3>Butterfly</h3>
-                            <img width="70px" src="./insects/pink-butterfly-png-32.png" alt="">
+                            <img width="70px" src="./images/pink-butterfly-png-32.png" alt="">
                         </div>
                         <div class="insect-boxes">
                             <h3>Cockraoch</h3>
-                            <img width="70px" src="./insects/Insect-Bug-Transparent-PNG.png" alt="">
+                            <img width="70px" src="./images/Insect-Bug-Transparent-PNG.png" alt="">
                         </div>
                    </div>
                 </div>
@@ -369,8 +379,7 @@
 
             setTimeout(() => {
                      
-                flyincrement(temp)
-                   
+                flyincrement(temp)  
             
             }, 1000); 
         }
@@ -395,13 +404,13 @@
             img.classList.add("insect-animation")
             showinsects(temp)
 
-            if(score == 3){
+            if(score == 5){
 
                 let messagediv = document.createElement("div")
                 messagediv.setAttribute("id", "message-box")
                 messagediv.innerHTML = `Are you annnoyed yet? <br>
                                         You are playing an impossible game!!`
-                playGameArea.append(messagediv)
+                document.getElementById('play-game').append(messagediv)
 
 
             }
