@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insects Animation</title>
+
+    <style>
+
+        :root{
+
+            --theme-color: palevioletred;
+
+        }
+
+        *{
+
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+        }
+
+        #insect-animation-code{
+            
+            width: 100%;
+            height: 100vh;
+            
+            overflow: hidden;
+            
+        }
+
+        #insect-animation-container{
+            
+            width: 100%;
+            height: 300vh;
+            
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-color: var(--theme-color);
+            transition: 0.6s;
+
+        }
+
+        .demo{
+
+            height: 100vh;
+            width: 100%;
+
+        }
+
+        #start-game{
+
+            position: relative;
+
+        }
+
+        #choose-insect{
+
+            position: relative;
+
+        }
+
+        .slides-styling{
+            
+            width: 60%;
+            height: 50vh;
+            
+            position: absolute;
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+            
+            align-content: center;
+            text-align: center;
+            
+            color: white;
+            /* background-color: rgba(127, 255, 212, 0.319); */
+            
+        }
+
+        
+        #start-game div button{
+            
+            width: 120px;
+            height: 40px;
+            
+            border: 2px solid var(--theme-color);
+            border-radius: 5px;
+            
+            background-color: aliceblue;
+            color: var(--theme-color);
+            font-weight: 700;
+            
+            margin-top: 20px;
+            cursor: pointer;
+            
+        }
+        
+        #choose-insect-container{
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            
+        }
+        
+        #insect-boxes-container{
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1;
+
+            width: 50%;
+            height: 100px;
+
+        }
+
+        .insect-boxes{
+
+            width: 100px;   
+            height: 100px;
+            
+            border: 2px solid aliceblue;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            font-size: 12px;
+
+            transition: 0.4s;
+            cursor: pointer;
+            
+        }
+
+        .insect-boxes:hover{
+
+            background-color: aliceblue;
+            color: var(--theme-color);
+            border: 2px solid rgb(207, 16, 79);
+
+        }
+
+        #play-game{
+
+            display: flex;
+            flex-direction: column;
+
+
+        }
+
+        #play-game-score-time{
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            width: 100%;
+            height: 70px;
+
+            /* background-color: blanchedalmond; */
+            padding: 0 20px;
+
+            font-weight: 700;
+            font-size: 22px;
+            color: white;
+
+        }
+
+        #play-game-area{
+
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .insect-box-images{
+
+            width: 100px;
+            position: absolute;
+            cursor: pointer;
+
+        }
+
+        .insect-animation{
+
+            animation: insectanimation 0.5s linear forwards;
+
+        }
+
+        @keyframes insectanimation {
+           
+            100%{
+            
+                width: 0;
+                height: 0;
+
+            }
+
+        }
+
+        #message-box{
+
+            width: 100%;
+            height: 150px;
+
+            align-content: center;
+            text-align: center;
+
+            background-color: rgba(240, 248, 255, 0.641);
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -150%);
+            z-index: 5;
+
+
+
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="insect-animation-code">
+        <div id="insect-animation-container">
+            <div class="demo" id="start-game">
+                <div class="slides-styling">
+                    <h2>Catch the insect</h2>
+                    <button id="start-game-button">Play Game</button>
+                </div>
+            </div>
+            <div class="demo" id="choose-insect">
+                <div class="slides-styling" id="choose-insect-container">
+                   <h2>Choose your "favorite" insect</h2>
+                   <div id="insect-boxes-container">
+                        <div class="insect-boxes">
+                            <h3>Firefly</h3>
+                            <img width="70px" src="./insects/pngtree-firefly-insect-close-up-on-white-background-png-image_15866371.png" alt="">
+                        </div>
+                        <div class="insect-boxes">
+                            <h3>Lady Bug
+                            </h3>
+                            <img width="70px" src="./insects/pngtree-ladybug-isolated-on-white-transparent-background-png-image_17460342.png" alt="">
+                        </div>
+                        <div class="insect-boxes">
+                            <h3>Butterfly</h3>
+                            <img width="70px" src="./insects/pink-butterfly-png-32.png" alt="">
+                        </div>
+                        <div class="insect-boxes">
+                            <h3>Cockraoch</h3>
+                            <img width="70px" src="./insects/Insect-Bug-Transparent-PNG.png" alt="">
+                        </div>
+                   </div>
+                </div>
+            </div>
+            <div class="demo" id="play-game">
+                <div id="play-game-score-time">
+                    <div id="timer-block">Time: <span id="time-taken">00:00</span></div>
+                    <div id="score-block">Score: <span id="total-score">0</span></div>
+                </div>
+                <div id="play-game-area"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let startGameButton = document.querySelector("#start-game-button")
+        let insectAnimationContainer = document.getElementById("insect-animation-container")
+        let stopbtn = document.getElementById("stop")
+
+        startGameButton.addEventListener("click", ()=>{
+
+           insectAnimationContainer.style.marginTop = "-100vh"
+
+        })
+
+        let insectBoxes = document.querySelectorAll(".insect-boxes")
+        let insectBoxesImgs = document.querySelectorAll(".insect-boxes img")
+
+        let timeTaken = document.getElementById("time-taken")
+        let totalScore = document.getElementById("total-score")
+        
+        
+        let playGameArea = document.getElementById("play-game-area")
+        let temp 
+        
+        insectBoxes.forEach((insect, insect_index) =>{
+
+            insect.addEventListener("click", ()=>{
+
+                playgamefunc()
+                temp = insect_index
+                showinsectsFirst(insect_index)  
+                timer()
+
+            })
+
+        })
+
+        function playgamefunc() {
+
+            insectAnimationContainer.style.marginTop = "-200vh"
+            
+        }
+
+        let abc, num;
+        let insectBoxImages, currentsec = 0, currentminute=0
+        let img;
+
+        function timer() {
+
+           setInterval(() => {
+                
+                currentsec++
+
+                if(currentsec < 60)    
+                    timeTaken.innerHTML = `${currentminute.toString().padStart(2, "0")} : ${currentsec.toString().padStart(2, "0")}`
+                
+                else{
+                    
+                    currentsec = 0
+                    currentminute++
+
+                }
+
+            }, 1000);
+
+            
+        }
+
+        function flyincrement(insect_index) {
+
+                    // let top_val = Math.random() * (window.innerHeight - 100) //window.innerHeight is the property to show the height of the current screen
+                    // let left_val = Math.random() * window.innerWidth //window.innerWidth shows the width of the current screen
+                    let top_val = Math.random() * 96
+                    let left_val = Math.random() *95
+                    let rotate_val = Math.random() *361                
+    
+                    img = document.createElement("img")
+                    img.classList.add('insect-box-images')
+                    img.src = insectBoxesImgs[insect_index].src
+                    img.style.left = `${left_val}%`
+                    img.style.top = `${top_val}%`
+                    
+                    img.addEventListener("click", ()=>{
+                                       console.log(event.target);
+                                                                             
+                        keepplaying(event.target)
+
+                    })
+
+                    img.style.transform = `rotate(${rotate_val}deg)`    
+                    playGameArea.append(img)
+                
+            
+        }
+
+        function showinsectsFirst(insect_index){
+
+            setTimeout(() => {
+                     
+                flyincrement(temp)
+                   
+            
+            }, 1000); 
+        }
+
+        function showinsects(insect_index){
+
+            num = 0;
+
+            setTimeout(() => flyincrement(temp), 1000);
+            setTimeout(() => flyincrement(temp), 2000);
+
+            
+        }
+        
+        let score = 0;
+        
+        function keepplaying(img) {
+            
+            score++;
+            totalScore.innerHTML = score
+            console.log(score, "score");
+            img.classList.add("insect-animation")
+            showinsects(temp)
+
+            if(score == 3){
+
+                let messagediv = document.createElement("div")
+                messagediv.setAttribute("id", "message-box")
+                messagediv.innerHTML = `Are you annnoyed yet? <br>
+                                        You are playing an impossible game!!`
+                playGameArea.append(messagediv)
+
+
+            }
+
+        }
+
+
+
+    </script>
+</body>
+</html>
